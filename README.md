@@ -9,48 +9,48 @@ Pierwsze kroki z Py.
 1. [SQLiteBrowser](https://sqlitebrowser.org/dl/).
 
 
-## Œrodowisko
+## Åšrodowisko
 
     C:\> mkdir %USERPROFILE%\PROJECTS
     C:\> subst r: %USERPROFILE%\PROJECTS       % po przelogowaniu trzeba
-                                               % powtórzyæ to polecenie
+                                               % powtÃ³rzyÄ‡ to polecenie
     C:\> R:
     R:\> mkdir helloworld
     R:\> cd helloworld
     R:\helloworld> python -m venv venv         % utworzenie wirtualnego
-                                               % œrodowiska o nazwie venv
+                                               % Å›rodowiska o nazwie venv
     R:\helloworld> venv\Scripts\activate.bat   % aktywacja witualnego
-                                               % œrodowiska
+                                               % Å›rodowiska
     (venv) R:\helloworld> python -m pip install --upgrade pip  % aktualizacja
-                                               % narzêdzia do instalowania
+                                               % narzÄ™dzia do instalowania
                                                % bibliotek
-    (venv) R:\helloworld> pip install ipython  % instalacja lepszego shella ni¿
-                                               % zwyk³y python
+    (venv) R:\helloworld> pip install ipython  % instalacja lepszego shella niÅ¼
+                                               % zwykÅ‚y python
     (venv) R:\helloworld> ipython              % uruchomienie lepszego shella,
-                                               % Ctrl+D to wyjœcie
+                                               % Ctrl+D to wyjÅ›cie
 
-### Uwagi do œrodowiska
+### Uwagi do Å›rodowiska
 
-Wirtualne œrodowisko zak³ada siê raz, uruchamia siê wiele razy (skryptem
-`activate.bat`). Wyjœcie to polecenie `deactivate` lub po prostu zamkniêcie
-wiersza poleceñ. Wirtualne œrodowisko pozwala instalowaæ niezale¿nie wiele
-ró¿nych bibliotek. Mo¿na mieæ (i z regu³y siê ma) wiele ró¿nych œrodowisk
+Wirtualne Å›rodowisko zakÅ‚ada siÄ™ raz, uruchamia siÄ™ wiele razy (skryptem
+`activate.bat`). WyjÅ›cie to polecenie `deactivate` lub po prostu zamkniÄ™cie
+wiersza poleceÅ„. Wirtualne Å›rodowisko pozwala instalowaÄ‡ niezaleÅ¼nie wiele
+rÃ³Å¼nych bibliotek. MoÅ¼na mieÄ‡ (i z reguÅ‚y siÄ™ ma) wiele rÃ³Å¼nych Å›rodowisk
 wirtualnych.
 
-IPython (trzeba instalowaæ niezale¿nie w ka¿dym œrodowisku wirtualnym). Pomaga
-na start, bo ma uzupe³nianie sk³adni i trwa³¹ historiê.
+IPython (trzeba instalowaÄ‡ niezaleÅ¼nie w kaÅ¼dym Å›rodowisku wirtualnym). Pomaga
+na start, bo ma uzupeÅ‚nianie skÅ‚adni i trwaÅ‚Ä… historiÄ™.
 
 ## Ciekawsze biblioteki na start
 
 * `pandas`
 * `matplotlib`
 * `pendulum`
-* `virtualenv`, `virtualenvwrapper` (uzupe³nienie œrodowiska wirtualnego)
+* `virtualenv`, `virtualenvwrapper` (uzupeÅ‚nienie Å›rodowiska wirtualnego)
 * `flake8`, `rope`, `pylint` (do pracy z samym kodem)
 
 ## Zaczytywanie danych z CSV
 
-Dane z XLS zapisz jako "CSV UTF-8 (comma separated)". I nastêpnie:
+Dane z XLS zapisz jako "CSV UTF-8 (comma separated)". I nastÄ™pnie:
 
     (venv) R:\helloworld> sqlite3 stage.sqlite3
     sqlite> .sep ;
@@ -58,3 +58,6 @@ Dane z XLS zapisz jako "CSV UTF-8 (comma separated)". I nastêpnie:
     sqlite> .q
     (venv) R:\helloworld> python db_import.py
 
+Gdy wyskakuje bÅ‚Ä…d `sqlite3.OperationalError` ("Could not decode to UTF-8 column ..."), to trzeba [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm):
+
+    (venv) R:\helloworld> iconv -t utf-8 test_data.csv > test_data_utf8.csv
