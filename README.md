@@ -58,6 +58,7 @@ Dane z XLS zapisz jako "CSV UTF-8 (comma separated)". I następnie:
     sqlite> .q
     (venv) R:\helloworld> python db_import.py
 
-Gdy wyskakuje błąd `sqlite3.OperationalError` ("Could not decode to UTF-8 column ..."), to trzeba [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm):
+Gdy wyskakuje błąd `sqlite3.OperationalError` ("Could not decode to UTF-8 column ..."), to trzeba zainstalować [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm) i:
 
+    (venv) R:\helloworld> set PATH=%PATH%;c:\Program Files (x86)\GnuWin32\bin\
     (venv) R:\helloworld> iconv -t utf-8 test_data.csv > test_data_utf8.csv
