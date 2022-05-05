@@ -3,9 +3,6 @@
 Make working with command line a little more pleasant with autocomplete,
 command history and more.
 
-Run `pip install pyreadline3` (either globally or in each individual
-virtual environment).
-
 Using "System Properties" dialog add `PYTHONSTARTUP` variable equal to
 `%USERPROFILE%\.pythonstartup.py`.
 
@@ -27,6 +24,14 @@ import collections
 from pprint import pprint as pp
 print('startup: imported os, collections and pprint as pp')
 ```
+
+## Required library
+
+Run `pip install pyreadline3`, either globally or in each individual
+virtual environment.
+
+For convenience it's included in `scripts\make_venv_here.bat` batch file.
+
 
 ## References
 

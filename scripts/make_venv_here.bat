@@ -11,7 +11,7 @@ call .venv\Scripts\activate.bat
 python -c "import sys; print(sys.executable)"
 
 @echo [INFO] Updating pip
-python -m pip install --upgrade pip setuptools
+python -m pip install --upgrade pip setuptools wheel pyreadline3
 
 if exist "requirements.txt" (
 	@echo [INFO] Installing requirements...
