@@ -27,10 +27,10 @@ try and speed up the process.
 - [Change Caps Lock into Ctrl](docs/nocaps.md)
 - [Quickly open System Properties](docs/system_properties.md) for example to
   change `%PATH%` in the `Environment Variables` window
+- [Python startup settings](docs/python_startup.md)
 
 
-## Links
-
+## Useful links
 
 1. [Python](https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe)
 1. [SQLite](https://sqlite.org/download.html)

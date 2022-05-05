@@ -1,1 +1,5 @@
-ipython
+# Testing
+pylint
+pydocstyle
+flake8
+blue

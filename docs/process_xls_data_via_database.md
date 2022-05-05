@@ -1,7 +1,14 @@
-# Processing data from XLS files via database
+# Process data from XLS files via database
 
-Sometimes it is useful/quickest to export data from XLS to a database and take
-them from there.
+Workflow is the following:
+
+1. Export data from XLS to CSV ("save as").
+1. Import CSV to SQLite.
+1. Process data (SQL, Python).
+1. Export data from database back to Excel (CSV).
+
+Because sometimes it is useful/quickest to export data from XLS to a database
+and take them from there.
 
 Save XLS file as `CSV UTF-8 (comma separated)` and then:
 

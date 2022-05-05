@@ -1,3 +1,6 @@
+"""Connect to local database and process data."""
+# pylint: disable=invalid-name,redefined-outer-name
+
 import argparse
 import os
 import sqlite3
@@ -7,6 +10,7 @@ DEFAULT_DB_FILENAME: str = 'staging.sqlite'
 
 
 def create_db_connection(db_file: str):
+    """Connect to database with file name and return cursor."""
     if os.path.isfile(db_file):
         try:
             conn = sqlite3.connect(db_file)
@@ -14,8 +18,7 @@ def create_db_connection(db_file: str):
         except sqlite3.Error as e:
             print(e)
         return None
-    else:
-        raise FileNotFoundError(f'Database file missing: {db_file}')
+    raise FileNotFoundError(f'Database file missing: {db_file}')
 
 
 def _namedtuple_factory(cursor: sqlite3.Cursor, row: sqlite3.Row):
@@ -43,4 +46,3 @@ for row in c.execute('select * from stage'):
     print(f'IMPORTED DATA: {row.KOLUMNA_1} {row.KOLUMNA_2}')
 
 # vim: sw=4:et:ai
-
