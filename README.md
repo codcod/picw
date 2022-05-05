@@ -26,7 +26,7 @@ try and speed up the process.
 
 - [Change Caps Lock into Ctrl](docs/nocaps.md)
 - [Quickly open System Properties](docs/system_properties.md) for example to
-  change `%PATH%` in the `Environment Variables` window
+  change `%PATH%` in the "Environment Variables" window
 - [Python startup settings](docs/python_startup.md)
 
 
