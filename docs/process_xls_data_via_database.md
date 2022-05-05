@@ -7,13 +7,26 @@ Save XLS file as `CSV UTF-8 (comma separated)` and then:
 
     (.venv) R:\picw> sqlite3 stage.sqlite3
     sqlite> .sep ;
-    sqlite> .import extras/data_to_import.csv STAGE
+    sqlite> .import --csv --skip 1 extras/data_to_import.csv STAGE
     sqlite> .q
-    (.venv) R:\picw> python src\process_data_from_db.py -d stage.sqlite3
+
+Data is imported into the local database, it's time to process it:
+
+    (.venv) R:\picw> python picw\process_data_from_db.py -d stage.sqlite3
 
 
-In case of `sqlite3.OperationalError ("Could not decode to UTF-8 column ...")`, install [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm) and then convert the file before importing:
+In case of `sqlite3.OperationalError ("Could not decode to UTF-8 column ...")`,
+install [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm) and then
+convert the CSV file before importing:
 
     (.venv) R:\picw> set PATH=%PATH%;c:\Program Files (x86)\GnuWin32\bin\
-    (.venv) R:\picw> iconv -t utf-8 test_data.csv > test_data_utf8.csvi
+    (.venv) R:\picw> iconv -t utf-8 test_data.csv > test_data_utf8.csv
+
+## Export to Excel
+
+Use `.excel` dot-command to quickly export to temporary CSV and open in the
+default editor:
+
+    sqlite> .excel
+    sqlite> select * from table_to_export;
 
