@@ -16,3 +16,6 @@ db.*
 
 # mypy
 .mypy_cache/
+
+# VSCode
+.vscode/

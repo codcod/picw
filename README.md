@@ -1,64 +1,34 @@
-# HelloWorld
+# Python in Corporate Windows
 
-Pierwsze kroki z Py.
-
-## Instalacja
-
-1. [Python](https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe)
-1. [VSCode](https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable) lub [Mu](https://codewith.mu/en/download).
-1. [SQLiteBrowser](https://sqlitebrowser.org/dl/).
+Once in a while I have to quickly set up a simple Python script in corporate
+environment. Since I'm not that familiar with Windows here are notes to help
+me navigate the most common quirks (hegemony of XLSX files and ISO-8859-2
+encoding) to try and speed up the process.
 
 
-## Środowisko
+## Dev workspace
 
     C:\> mkdir %USERPROFILE%\PROJECTS
-    C:\> subst r: %USERPROFILE%\PROJECTS       % po przelogowaniu trzeba
-                                               % powtórzyć to polecenie
+    C:\> subst r: %USERPROFILE%\PROJECTS       % requires redo after reboot
     C:\> R:
-    R:\> mkdir helloworld
-    R:\> cd helloworld
-    R:\helloworld> python -m venv venv         % utworzenie wirtualnego
-                                               % środowiska o nazwie venv
-    R:\helloworld> venv\Scripts\activate.bat   % aktywacja witualnego
-                                               % środowiska
-    (venv) R:\helloworld> python -m pip install --upgrade pip  % aktualizacja
-                                               % narzędzia do instalowania
-                                               % bibliotek
-    (venv) R:\helloworld> pip install ipython  % instalacja lepszego shella niż
-                                               % zwykły python
-    (venv) R:\helloworld> ipython              % uruchomienie lepszego shella,
-                                               % Ctrl+D to wyjście
+    R:\> git clone https://github.com/codcod/picw.git
+    R:\> cd picw
+    R:\picw> scripts/make_venv_here.bat
 
-### Uwagi do środowiska
 
-Wirtualne środowisko zakłada się raz, uruchamia się wiele razy (skryptem
-`activate.bat`). Wyjście to polecenie `deactivate` lub po prostu zamknięcie
-wiersza poleceń. Wirtualne środowisko pozwala instalować niezależnie wiele
-różnych bibliotek. Można mieć (i z reguły się ma) wiele różnych środowisk
-wirtualnych.
+## Tips
 
-IPython (trzeba instalować niezależnie w każdym środowisku wirtualnym). Pomaga
-na start, bo ma uzupełnianie składni i trwałą historię.
+- [Processing XLS data using a staging database](docs/process_xls_data_via_database.md)
 
-## Ciekawsze biblioteki na start
 
-* `pandas`
-* `matplotlib`
-* `pendulum`
-* `virtualenv`, `virtualenvwrapper` (uzupełnienie środowiska wirtualnego)
-* `flake8`, `rope`, `pylint` (do pracy z samym kodem)
+## Links
 
-## Zaczytywanie danych z CSV
 
-Dane z XLS zapisz jako "CSV UTF-8 (comma separated)". I następnie:
+1. [Python](https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe)
+1. [SQLite](https://sqlite.org/download.html)
+1. [SQLiteBrowser](https://sqlitebrowser.org/dl/)
+1. [VSCode](https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable)
+1. [Mu](https://codewith.mu/en/download)
+1. [Notepad++](https://notepad-plus-plus.org/downloads/v8.4/)
+1. [Neovim](https://github.com/neovim/neovim/releases/)
 
-    (venv) R:\helloworld> sqlite3 stage.sqlite3
-    sqlite> .sep ;
-    sqlite> .import test_data.csv STAGE
-    sqlite> .q
-    (venv) R:\helloworld> python db_import.py
-
-Gdy wyskakuje błąd `sqlite3.OperationalError` ("Could not decode to UTF-8 column ..."), to trzeba zainstalować [iconv](http://gnuwin32.sourceforge.net/packages/libiconv.htm) i:
-
-    (venv) R:\helloworld> set PATH=%PATH%;c:\Program Files (x86)\GnuWin32\bin\
-    (venv) R:\helloworld> iconv -t utf-8 test_data.csv > test_data_utf8.csv

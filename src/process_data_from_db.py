@@ -1,4 +1,5 @@
 import argparse
+import os
 import sqlite3
 from collections import namedtuple
 
@@ -6,12 +7,15 @@ DEFAULT_DB_FILENAME = 'db.sqlite'
 
 
 def create_db_connection(db_file):
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
-    except sqlite3.Error as e:
-        print(e)
-    return None
+    if os.path.isfile(db_file):
+        try:
+            conn = sqlite3.connect(db_file)
+            return conn
+        except sqlite3.Error as e:
+            print(e)
+        return None
+    else:
+        raise FileNotFoundError(f'Database file missing: {db_file}')
 
 
 def _namedtuple_factory(cursor, row):
