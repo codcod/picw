@@ -14,16 +14,18 @@ Create `.pythonstartup.py` file in `%USERPROFILE%` (`C:\Users\myname\`):
 ```python
 try:
     import readline
-    import rlcompleter
-    readline.parse_and_bind('tab: complete')
 except ImportError:
     print('startup: readline not supported')
+else:
+    import rlcompleter
+    readline.parse_and_bind('tab: complete')
 
 # For convenience:
 
 import os
 import collections
-print('startup: imported os, collections')
+from pprint import pprint as pp
+print('startup: imported os, collections and pprint as pp')
 ```
 
 ## References
