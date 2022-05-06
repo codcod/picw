@@ -32,12 +32,15 @@ try and speed up the process.
 
 ## Useful links
 
-1. [Python](https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe)
-1. [Neovim](https://github.com/neovim/neovim/releases/)
+Download pages:
+
+1. [Python](https://www.python.org/ftp/python/3.10.4/)
 1. [SQLite](https://sqlite.org/download.html)
 1. [SQLiteBrowser](https://sqlitebrowser.org/dl/)
-1. [VSCode](https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable)
-1. [Mu](https://codewith.mu/en/download)
+1. [Neovim](https://github.com/neovim/neovim/releases/)
+1. [VSCode](https://code.visualstudio.com)
 1. [Notepad++](https://notepad-plus-plus.org/downloads/v8.4/)
+1. [Mu](https://codewith.mu/en/download)
 1. [GNUWin Packages](http://gnuwin32.sourceforge.net/packages.html)
+   [all at once](https://sourceforge.net/projects/getgnuwin32/files/getgnuwin32/)
 
